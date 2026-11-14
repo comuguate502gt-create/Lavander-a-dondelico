@@ -37,7 +37,7 @@
     background-attachment:fixed;
     padding-bottom:40px;
   }
-  body.vista-nuevo{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+  body.vista-nuevo{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
   .wrap{max-width:720px;margin:0 auto;padding:12px 14px}
 
   .banner{display:block;width:100%;height:auto;border-radius:var(--rad);box-shadow:0 8px 24px rgba(11,58,158,.25)}
@@ -152,12 +152,13 @@
     padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
     border-top-left-radius:22px;border-top-right-radius:22px;box-shadow:0 -8px 24px rgba(8,42,117,.35);
   }
-  .barra-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px}
+  .barra-in{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
   .barra .tot{flex:1;min-width:0}
   .barra .lbl{font-weight:700;font-size:.8rem;opacity:.9}
   .barra .piezas{font-weight:800;font-size:.95rem}
   .barra .total{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.9rem;line-height:1.05;color:var(--amarillo)}
-  .barra .btn{flex:none;background:var(--amarillo);color:var(--azul-osc);min-width:150px}
+  .barra .btn{width:100%;background:var(--amarillo);color:var(--azul-osc)}
+  .barra .tot{padding-right:48%}
 
   /* Pedidos */
   .herr{display:grid;gap:10px;margin-bottom:12px}
@@ -203,7 +204,7 @@
     z-index:50;max-width:min(92vw,520px);background:var(--azul-osc);color:#fff;
     padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.35);text-align:center;
   }
-  body.vista-nuevo .toast{bottom:calc(130px + env(safe-area-inset-bottom,0px))}
+  body.vista-nuevo .toast{bottom:calc(200px + env(safe-area-inset-bottom,0px))}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -300,11 +301,11 @@
 
 <div class="barra" id="barra" role="region" aria-label="Totales del pedido">
   <div class="barra-in">
+    <button class="btn" id="btnGuardar" type="button">Guardar pedido</button>
     <div class="tot" aria-live="polite">
       <div class="lbl">Total a pagar · <span class="piezas"><span id="totalPiezas">0</span> piezas</span></div>
       <div class="total" id="totalGeneral">Q0.00</div>
     </div>
-    <button class="btn" id="btnGuardar" type="button">Guardar pedido</button>
   </div>
 </div>
 
