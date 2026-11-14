@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lavandería y Secadora DONDE LICO – Precios</title>
+<meta name="description" content="Tu ropa limpia, fresca y a tiempo. Consulta nuestros precios y calcula cuánto pagarás por el lavado y secado.">
+<meta name="theme-color" content="#0b3a9e">
+
+<!-- ===== Miniatura al compartir el enlace (WhatsApp, Facebook, etc.) =====
+     IMPORTANTE: cambia https://TU-SITIO.netlify.app por la dirección real de tu sitio en Netlify -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_GT">
+<meta property="og:title" content="Lavandería y Secadora DONDE LICO">
+<meta property="og:description" content="Tu ropa limpia, fresca y a tiempo. Mira los precios y calcula tu total.">
+<meta property="og:url" content="https://TU-SITIO.netlify.app/">
+<meta property="og:image" content="https://TU-SITIO.netlify.app/miniatura.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://TU-SITIO.netlify.app/miniatura.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --azul:#0b3a9e;
+    --azul-osc:#082a75;
+    --azul-med:#1f78e6;
+    --celeste:#e8f3ff;
+    --agua:#cfe6ff;
+    --amarillo:#ffd21f;
+    --amarillo-osc:#e8b800;
+    --texto:#0a2158;
+    --blanco:#ffffff;
+    --verde:#25d366;
+    --verde-osc:#128c4a;
+    --rad:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--texto);
+    background:
+      radial-gradient(circle at 12% 8%, #fff 0 6px, transparent 7px),
+      radial-gradient(circle at 88% 22%, #fff 0 9px, transparent 10px),
+      radial-gradient(circle at 6% 60%, #fff 0 11px, transparent 12px),
+      radial-gradient(circle at 94% 75%, #fff 0 7px, transparent 8px),
+      linear-gradient(180deg,var(--agua) 0%, var(--celeste) 40%, #f6fbff 100%);
+    background-attachment:fixed;
+    padding-bottom:calc(150px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:14px}
+
+  /* Cabecera */
+  .banner{
+    display:block;width:100%;height:auto;
+    border-radius:var(--rad);
+    box-shadow:0 8px 24px rgba(11,58,158,.25);
+  }
+  .intro{
+    margin:16px 4px 6px;
+    font-family:"Baloo 2",sans-serif;
+    font-weight:800;
+    font-size:1.55rem;
+    line-height:1.15;
+    color:var(--azul);
+  }
+  .intro-sub{margin:0 4px 14px;font-size:1rem;font-weight:700;color:#35508f}
+
+  /* Datos del cliente */
+  .datos{
+    background:#fff;border-radius:var(--rad);padding:14px;margin:0 0 14px;
+    box-shadow:0 4px 14px rgba(11,58,158,.12);
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  }
+  .datos h2{
+    grid-column:1 / -1;margin:0;
+    font-family:"Baloo 2",sans-serif;font-size:1.15rem;color:var(--azul);
+  }
+  .campo{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .campo.ancho{grid-column:1 / -1}
+  .campo label{font-weight:800;font-size:.9rem;color:var(--azul)}
+  .campo input,.campo select{
+    width:100%;min-height:48px;padding:8px 12px;
+    font:700 1rem "Nunito",sans-serif;color:var(--texto);
+    background:#fff;border:2px solid var(--agua);border-radius:12px;
+  }
+  .campo .fila{display:flex;gap:8px}
+  .campo .fila input{flex:1}
+  .ahora{
+    flex:none;min-height:48px;padding:0 14px;border:0;border-radius:12px;
+    background:var(--amarillo);color:var(--azul-osc);
+    font:800 .95rem "Nunito",sans-serif;cursor:pointer;touch-action:manipulation;
+  }
+  .ahora:active{background:var(--amarillo-osc)}
+
+  /* Lista de precios por prenda */
+  .lista{display:flex;flex-direction:column;gap:14px}
+  .grupo{
+    background:var(--blanco);border-radius:var(--rad);overflow:hidden;
+    box-shadow:0 4px 14px rgba(11,58,158,.12);
+  }
+  .grupo-cab{
+    display:flex;align-items:center;gap:12px;
+    background:var(--azul);color:#fff;padding:10px 14px;
+  }
+  .grupo-cab .precio{
+    flex:none;text-align:center;
+    background:var(--amarillo);color:var(--azul-osc);
+    border-radius:12px;padding:6px 10px 4px;
+    font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.35rem;line-height:1;
+  }
+  .grupo-cab .precio small{
+    display:block;margin-top:2px;
+    font-family:"Nunito",sans-serif;font-size:.65rem;font-weight:800;
+  }
+  .grupo-cab h2{
+    margin:0;flex:1;
+    font-family:"Baloo 2",sans-serif;font-size:1.05rem;line-height:1.2;
+  }
+  .grupo-cab .gsub{text-align:right;font-size:.72rem;font-weight:700;opacity:.9;line-height:1.1}
+  .grupo-cab .gsub strong{display:block;font-family:"Baloo 2",sans-serif;font-size:1.1rem;color:var(--amarillo)}
+
+  .fila-prenda{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:10px 14px;
+    border-top:2px dashed var(--agua);
+    background:#fff;
+    transition:background-color .15s;
+  }
+  .fila-prenda:first-of-type{border-top:0}
+  .fila-prenda.activo{background:#eef6ff}
+  .fila-prenda .nom{min-width:0}
+  .fila-prenda .nom b{display:block;font-family:"Baloo 2",sans-serif;font-size:1.05rem;line-height:1.15;color:var(--azul)}
+  .fila-prenda .nom span{font-size:.85rem;font-weight:700;color:#4a63a0}
+  .fila-prenda .nom span em{font-style:normal;color:var(--azul);font-weight:800}
+
+  .stepper{display:flex;align-items:center;gap:5px;flex:none}
+  .stepper button{
+    width:44px;height:44px;
+    border:0;border-radius:50%;
+    background:var(--azul);color:#fff;
+    font-size:1.6rem;font-weight:800;line-height:1;
+    cursor:pointer;touch-action:manipulation;
+  }
+  .stepper button.mas{background:var(--azul-med)}
+  .stepper button:active{transform:scale(.92)}
+  .stepper input{
+    width:58px;height:44px;
+    text-align:center;
+    font:800 1.2rem "Nunito",sans-serif;
+    color:var(--texto);
+    border:2px solid var(--agua);border-radius:12px;background:#fff;
+    -moz-appearance:textfield;
+  }
+  .stepper input::-webkit-outer-spin-button,
+  .stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+
+  button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{
+    outline:3px solid var(--amarillo-osc);
+    outline-offset:2px;
+  }
+
+    /* Acciones */
+  .acciones{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+  .btn{
+    flex:1 1 220px;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    min-height:52px;
+    padding:10px 16px;
+    border:0;border-radius:14px;
+    font:800 1rem "Nunito",sans-serif;
+    text-decoration:none;
+    cursor:pointer;
+    touch-action:manipulation;
+  }
+  .btn svg{width:22px;height:22px;flex:none}
+  .btn.wa{background:var(--verde);color:#053d1c}
+  .btn.wa:active{background:var(--verde-osc);color:#fff}
+  .btn.sec{background:#fff;color:var(--azul);border:2px solid var(--azul)}
+  .btn.limpiar{flex:1 1 100%;background:transparent;color:#a02020;min-height:44px;font-size:.92rem}
+
+  .nota{
+    margin:14px 4px 4px;
+    font-size:.85rem;font-weight:600;color:#4a63a0;
+    text-align:center;
+  }
+
+  /* Barra de totales fija */
+  .barra{
+    position:fixed;left:0;right:0;bottom:0;z-index:10;
+    background:var(--azul);
+    color:#fff;
+    padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));
+    border-top-left-radius:22px;border-top-right-radius:22px;
+    box-shadow:0 -8px 24px rgba(8,42,117,.35);
+  }
+  .barra-in{
+    max-width:720px;margin:0 auto;
+    display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:end;
+  }
+  .barra .lbl{font-weight:700;font-size:.9rem;opacity:.9}
+  .barra .prendas{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.25rem}
+  .barra .total-box{
+    grid-row:1 / span 2;grid-column:2;
+    background:var(--amarillo);color:var(--azul-osc);
+    border-radius:16px;
+    padding:6px 18px 4px;
+    text-align:center;
+  }
+  .barra .total-box .lbl{opacity:1;font-size:.8rem;color:var(--azul-osc)}
+  .barra .total{
+    font-family:"Baloo 2",sans-serif;font-weight:800;
+    font-size:2.1rem;line-height:1.05;
+  }
+  .barra .aviso{grid-column:1;font-size:.78rem;font-weight:600;opacity:.8}
+
+  @media (min-width:600px){
+    .intro{font-size:1.9rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <img class="banner" src="banner.jpg" alt="Lavandería y Secadora DONDE LICO – Tu ropa limpia, fresca y a tiempo" width="1000" height="420">
+
+  <h1 class="intro">Calcula cuánto pagarás por lavado y secado</h1>
+  <p class="intro-sub">Indica cuántas prendas traerás y el total se suma solo. Precios en quetzales, por prenda.</p>
+
+  <section class="datos" aria-label="Datos del cliente">
+    <h2>Datos del cliente</h2>
+    <div class="campo ancho">
+      <label for="nombre">Nombre del cliente</label>
+      <input id="nombre" type="text" autocomplete="name" maxlength="60" placeholder="Escribe tu nombre">
+    </div>
+    <div class="campo ancho">
+      <label for="sector">Sector</label>
+      <select id="sector">
+        <option value="">Elige tu sector</option>
+        <option value="1">Sector 1</option>
+        <option value="2">Sector 2</option>
+        <option value="3">Sector 3</option>
+        <option value="4">Sector 4</option>
+        <option value="5">Sector 5</option>
+        <option value="6">Sector 6</option>
+        <option value="7">Sector 7</option>
+      </select>
+    </div>
+    <div class="campo ancho">
+      <label for="horaRecibida">Hora de recibida la ropa</label>
+      <div class="fila">
+        <input id="horaRecibida" type="time">
+        <button class="ahora" id="btnAhora" type="button">Ahora</button>
+      </div>
+    </div>
+    <div class="campo">
+      <label for="diaEntrega">Día de entrega</label>
+      <input id="diaEntrega" type="date">
+    </div>
+    <div class="campo">
+      <label for="horaEntrega">Hora de entrega</label>
+      <input id="horaEntrega" type="time">
+    </div>
+  </section>
+
+  <div class="lista" id="lista"></div>
+
+  <div class="acciones">
+    <button class="btn wa" id="btnResumen" type="button">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.500 2 2 6.300 2 11.600c0 1.900.6 3.600 1.600 5.100L2.500 21.500l4.900-1.300c1.400.8 3 1.200 4.600 1.200 5.500 0 10-4.300 10-9.600S17.500 2 12 2z"/></svg>
+      Enviar mi cálculo por WhatsApp
+    </button>
+    <button class="btn sec" id="btnEnlace" type="button">Compartir esta página por WhatsApp</button>
+    <button class="btn limpiar" id="btnLimpiar" type="button">Borrar todo y empezar de nuevo</button>
+  </div>
+
+  <p class="nota">Tus datos y cantidades se guardan en este dispositivo. Si cierras la página, las encontrarás al volver.</p>
+</main>
+
+<div class="barra" role="region" aria-label="Totales">
+  <div class="barra-in">
+    <div>
+      <div class="lbl">Total de prendas</div>
+      <div class="prendas" id="totalPrendas">0</div>
+    </div>
+    <div class="total-box" aria-live="polite">
+      <div class="lbl">Total a pagar</div>
+      <div class="total" id="totalGeneral">Q0.00</div>
+    </div>
+    <div class="aviso">Valor estimado; se confirma al recibir la ropa.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ====== CONFIGURACIÓN ======
+  // Número de WhatsApp del negocio (opcional). Formato internacional sin "+" ni espacios.
+  // Ejemplo Guatemala: "50255551234". Si lo dejas vacío, el cálculo se envía eligiendo el contacto.
+  var WHATSAPP_NEGOCIO = "";
+
+  var NOMBRE_NEGOCIO = "Lavandería y Secadora DONDE LICO";
+  var CLAVE = "dondeLico.cantidades.v2";
+
+  // ====== PRECIOS (por prenda) ======
+  var GRUPOS = [
+    { precio:3, titulo:"Ropa ligera", items:[
+      {id:"playeras",   nombre:"Playeras"},
+      {id:"camisas",    nombre:"Camisas"},
+      {id:"boxer",      nombre:"Bóxer"},
+      {id:"pantSuave",  nombre:"Pantalones de tela suave"},
+      {id:"calcetines", nombre:"Calcetines", unidad:"pares"}
+    ]},
+    { precio:5, titulo:"Ropa gruesa y ropa de cama delgada", items:[
+      {id:"pantGrueso", nombre:"Pantalones de tela gruesa o lona"},
+      {id:"camionetas", nombre:"Camionetas de tela gruesa o lona"},
+      {id:"sabanas",    nombre:"Sábanas delgadas"},
+      {id:"toallaDelg", nombre:"Toallas delgadas"}
+    ]},
+    { precio:10, titulo:"Toallas gruesas", items:[
+      {id:"toallaGrue", nombre:"Toallas gruesas"}
+    ]},
+    { precio:15, titulo:"Zapatos tenis", items:[
+      {id:"tenis",      nombre:"Zapatos tenis", unidad:"pares"}
+    ]},
+    { precio:40, titulo:"Ponchos y edredones", items:[
+      {id:"ponchos",    nombre:"Ponchos"},
+      {id:"edredones",  nombre:"Edredones"}
+    ]}
+  ];
+  var CATEGORIAS = [];
+  GRUPOS.forEach(function(g, gi){
+    g.items.forEach(function(it){ it.precio = g.precio; it.grupo = gi; CATEGORIAS.push(it); });
+  });
+
+    var CLAVE_DATOS = "dondeLico.datos.v1";
+  var CAMPOS = ["nombre","sector","horaRecibida","diaEntrega","horaEntrega"];
+  var MAX = 999;
+  var cantidades = {};
+  CATEGORIAS.forEach(function(c){ cantidades[c.id] = 0; });
+
+  // ====== ALMACENAMIENTO LOCAL ======
+  function cargar(){
+    try{
+      var raw = localStorage.getItem(CLAVE);
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      CATEGORIAS.forEach(function(c){
+        var n = parseInt(data[c.id], 10);
+        if(!isNaN(n) && n > 0) cantidades[c.id] = Math.min(n, MAX);
+      });
+    }catch(e){ /* sin almacenamiento disponible: la página sigue funcionando */ }
+  }
+  function guardar(){
+    try{ localStorage.setItem(CLAVE, JSON.stringify(cantidades)); }catch(e){}
+  }
+
+  function cargarDatos(){
+    try{
+      var d = JSON.parse(localStorage.getItem(CLAVE_DATOS) || "{}");
+      CAMPOS.forEach(function(k){ if(typeof d[k] === "string") $(k).value = d[k]; });
+    }catch(e){}
+  }
+  function guardarDatos(){
+    var d = {};
+    CAMPOS.forEach(function(k){ d[k] = $(k).value; });
+    try{ localStorage.setItem(CLAVE_DATOS, JSON.stringify(d)); }catch(e){}
+  }
+  function fechaLarga(v){
+    if(!v) return "";
+    var p = v.split("-");
+    var f = new Date(+p[0], +p[1]-1, +p[2]);
+    var t = f.toLocaleDateString("es-GT",{weekday:"long", day:"numeric", month:"long"});
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+  function horaCorta(v){
+    if(!v) return "";
+    var p = v.split(":"), h = +p[0], m = p[1];
+    return ((h % 12) || 12) + ":" + m + " " + (h < 12 ? "a. m." : "p. m.");
+  }
+
+  // ====== UTILIDADES ======
+  function q(n){
+    return "Q" + n.toLocaleString("es-GT",{minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+  function $(id){ return document.getElementById(id); }
+
+  // ====== DIBUJAR LISTA ======
+  var lista = $("lista");
+  GRUPOS.forEach(function(g, gi){
+    var sec = document.createElement("section");
+    sec.className = "grupo";
+    sec.innerHTML =
+      '<div class="grupo-cab">' +
+        '<div class="precio">Q' + g.precio + '.00<small>c/u</small></div>' +
+        '<h2>' + g.titulo + '</h2>' +
+        '<div class="gsub">Subtotal<strong id="grupo-' + gi + '">Q0.00</strong></div>' +
+      '</div>';
+    g.items.forEach(function(c){
+      var u = c.unidad === "pares" ? "par" : "prenda";
+      var row = document.createElement("div");
+      row.className = "fila-prenda";
+      row.id = "item-" + c.id;
+      row.innerHTML =
+        '<div class="nom"><b>' + c.nombre + '</b>' +
+          '<span>Q' + c.precio + '.00 por ' + u + ' · <em class="sub">Q0.00</em></span></div>' +
+        '<div class="stepper">' +
+          '<button type="button" class="menos" aria-label="Quitar ' + c.nombre + '">−</button>' +
+          '<input type="number" inputmode="numeric" min="0" max="' + MAX + '" value="0" aria-label="Cantidad de ' + c.nombre + '">' +
+          '<button type="button" class="mas" aria-label="Agregar ' + c.nombre + '">+</button>' +
+        '</div>';
+      sec.appendChild(row);
+
+      var input = row.querySelector("input");
+      row.querySelector(".menos").addEventListener("click", function(){ fijar(c.id, cantidades[c.id] - 1); });
+      row.querySelector(".mas").addEventListener("click", function(){ fijar(c.id, cantidades[c.id] + 1); });
+      input.addEventListener("input", function(){
+        var n = parseInt(input.value, 10);
+        fijar(c.id, isNaN(n) ? 0 : n, true);
+      });
+      input.addEventListener("blur", function(){ input.value = cantidades[c.id]; });
+      input.addEventListener("focus", function(){ input.select(); });
+    });
+    lista.appendChild(sec);
+  });
+
+    function fijar(id, n, desdeInput){
+    n = Math.max(0, Math.min(MAX, n));
+    cantidades[id] = n;
+    guardar();
+    pintar(desdeInput ? id : null);
+  }
+
+  function calcular(){
+    var prendas = 0, total = 0;
+    CATEGORIAS.forEach(function(c){
+      prendas += cantidades[c.id];
+      total += cantidades[c.id] * c.precio;
+    });
+    return { prendas:prendas, total:total };
+  }
+
+  function pintar(noTocarInput){
+    var sub = GRUPOS.map(function(){ return 0; });
+    CATEGORIAS.forEach(function(c){
+      var row = $("item-" + c.id);
+      var n = cantidades[c.id];
+      var input = row.querySelector("input");
+      if(noTocarInput !== c.id) input.value = n;
+      row.querySelector(".sub").textContent = q(n * c.precio);
+      row.classList.toggle("activo", n > 0);
+      sub[c.grupo] += n * c.precio;
+    });
+    sub.forEach(function(v, i){ $("grupo-" + i).textContent = q(v); });
+    var r = calcular();
+    $("totalPrendas").textContent = r.prendas;
+    $("totalGeneral").textContent = q(r.total);
+  }
+
+  // ====== WHATSAPP ======
+  function urlPagina(){
+    return location.protocol === "file:" ? "" : location.origin + location.pathname;
+  }
+  function abrirWhatsApp(texto, numero){
+    var base = numero ? "https://wa.me/" + numero : "https://wa.me/";
+    window.open(base + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
+  }
+
+  $("btnResumen").addEventListener("click", function(){
+    var r = calcular();
+    if(r.prendas === 0){
+      alert("Agrega al menos una prenda para enviar tu cálculo.");
+      return;
+    }
+    var lineas = ["*" + NOMBRE_NEGOCIO + "*", "Mi cálculo de lavado y secado:", ""];
+    var nom = $("nombre").value.trim();
+    if(nom) lineas.push("Cliente: " + nom);
+    if($("sector").value) lineas.push("Sector: " + $("sector").value);
+    if($("horaRecibida").value) lineas.push("Hora de recibida: " + horaCorta($("horaRecibida").value));
+    var ent = [fechaLarga($("diaEntrega").value), horaCorta($("horaEntrega").value)].filter(Boolean).join(", ");
+    if(ent) lineas.push("Entrega: " + ent);
+    if(nom || $("sector").value || $("horaRecibida").value || ent) lineas.push("");
+    CATEGORIAS.forEach(function(c){
+      var n = cantidades[c.id];
+      if(n > 0){
+        lineas.push("• " + c.nombre + ": " + n + " × Q" + c.precio + ".00 = " + q(n * c.precio));
+      }
+    });
+    lineas.push("", "Total de piezas: " + r.prendas, "*Total a pagar: " + q(r.total) + "*");
+    var u = urlPagina();
+    if(u) lineas.push("", "Precios: " + u);
+    abrirWhatsApp(lineas.join("\n"), WHATSAPP_NEGOCIO);
+  });
+
+  $("btnEnlace").addEventListener("click", function(){
+    var u = urlPagina();
+    var texto = "*" + NOMBRE_NEGOCIO + "*\nTu ropa limpia, fresca y a tiempo. Mira nuestros precios y calcula tu total aquí:" + (u ? "\n" + u : "");
+    abrirWhatsApp(texto, "");
+  });
+
+  CAMPOS.forEach(function(k){
+    $(k).addEventListener("input", guardarDatos);
+    $(k).addEventListener("change", guardarDatos);
+  });
+  $("btnAhora").addEventListener("click", function(){
+    var d = new Date();
+    $("horaRecibida").value = ("0"+d.getHours()).slice(-2) + ":" + ("0"+d.getMinutes()).slice(-2);
+    guardarDatos();
+  });
+
+  $("btnLimpiar").addEventListener("click", function(){
+    if(confirm("¿Borrar los datos y todas las cantidades?")){
+      CAMPOS.forEach(function(k){ $(k).value = ""; });
+      guardarDatos();
+      CATEGORIAS.forEach(function(c){ cantidades[c.id] = 0; });
+      guardar();
+      pintar();
+    }
+  });
+
+  cargar();
+  cargarDatos();
+  pintar();
+})();
+</script>
+</body>
+</html>
